@@ -171,7 +171,7 @@
                             </ul>
                         </li>
                         <li class="wow fadeInDown" data-wow-delay="0.4s">
-                            <a href="#" class="dropdown-toggle">오시는길</a>
+                            <a href="/semi/maplist" class="dropdown-toggle">오시는길</a>
                         </li>
 
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#">이용안내</a></li>

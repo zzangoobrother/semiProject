@@ -226,14 +226,14 @@
 						<div class="box-two proerty-item">
 							<div class="item-thumb">
 								<a
-									href="/semi/pdetail.bd?pname=<%=p.getP_name()%>&page=<%=currentPage%>"><img
+									href="/semi/pdetail.bd?pname=<%=p.getP_name()%>"><img
 									src="<%=p.getP_main_image().split(",")[0]%>"></a>
 							</div>
 
 							<div class="item-entry overflow">
 								<h5>
 									<a
-										href="/semi/pdetail.bd?pname=<%=p.getP_name()%>&page=<%=currentPage%>"><%=p.getP_name() %></a>
+										href="/semi/pdetail.bd?pname=<%=p.getP_name()%>"><%=p.getP_name() %></a>
 								</h5>
 								<div class="dot-hr"></div>
 								<span class="pull-left"><b> 가격 :</b></span> <span

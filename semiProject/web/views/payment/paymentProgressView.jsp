@@ -121,7 +121,7 @@
 							pay_method : "card",
 							merchant_uid : "merchant_" + new Date().getTime(),
 							name : "주문명: 결제테스트",
-							amount : $("#money").html(),
+							amount : $("#orderpay").val(),
 
 							buyer_email : "iamport@siot.do",
 							buyer_name : $("#sellname").html(),

@@ -53,10 +53,10 @@ public class LocationListServlet extends HttpServlet {
 			
 			int maxPage = (int) Math.ceil(((double)listCount / limit));
 			
-			int startPage = (currentPage / 10) * 10 - 1;
-			
+			int startPage = (((int)((double)currentPage / limit + 0.9)) - 1) * limit + 1;
+
 			int endPage = startPage + limit -1;
-			
+			System.out.println(currentPage + "," + startPage + "," + maxPage + "," + endPage);
 			if(maxPage < endPage) {
 				endPage = maxPage;
 			}

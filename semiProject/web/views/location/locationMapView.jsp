@@ -115,5 +115,43 @@
 			<% } %>
 		</table>
 	</div>
+
+	<div class="col-md-12 clear">
+		<div class="pull-right">
+			<div class="pagination">
+				<ul>
+					<% if(currentPage <= 1) { %>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=1"><<</a></li>
+					<% } %>
+
+					<% if(currentPage == 1) { %>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=<%= currentPage - 1%>"><</a></li>
+					<% } %>
+
+					<% for (int p = startPage; p <= endPage; p++) { 
+					if (p == currentPage) { %>
+					<li><a href="#"> <font color="red"><%=p%></font>
+					</a></li>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=<%=p%>"> <%=p%>
+					</a></li>
+					<%}} %>
+
+					<% if (currentPage == maxPage) { %>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=<%= currentPage + 1 %>"> >
+					</a></li>
+					<% } %>
+
+					<% if (currentPage >= maxPage) { %>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=<%= maxPage %>"> >> </a></li>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
 <%@ include file="../../footer.jsp" %>

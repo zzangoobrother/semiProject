@@ -64,7 +64,7 @@ public class ProductListServlet extends HttpServlet {
 					//현재 페이지에 보여줄 시작 페이지 수
 					//1, 11, 21, ....
 					//현재 페이지가 13페이지면 시작 페이지는 11페이지가 됨.
-					int startPage = (currentPage / 10) * 10 + 1;
+					int startPage = (((int)((double)currentPage / limit + 0.9)) - 1) * limit + 1;
 					//만약, 목록 아래에 보여질 페이지 갯수가 10개이면
 					//끝페이지수는 20페이지가 되어야 함
 					int endPage = startPage + limit -1;

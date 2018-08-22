@@ -40,7 +40,6 @@ public class ProductDetailServlet extends HttpServlet {
 				System.out.println("servlet");
 				
 				String pName = request.getParameter("pname");
-				int currentPage = Integer.parseInt(request.getParameter("page"));
 				
 				ProductsService pservice = new ProductsService();
 				
@@ -54,7 +53,6 @@ public class ProductDetailServlet extends HttpServlet {
 					if(product != null){
 						view = request.getRequestDispatcher("views/product/productDetailView.jsp");
 						request.setAttribute("product", product);
-						request.setAttribute("currentPage", currentPage);
 						view.forward(request, response);
 					}else{
 						view = request.getRequestDispatcher("views/product/productsError.jsp");

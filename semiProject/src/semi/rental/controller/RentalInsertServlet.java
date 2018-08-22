@@ -37,11 +37,11 @@ public class RentalInsertServlet extends HttpServlet {
 		System.out.println(request.getAttribute("productNo"));
 		
 		
-		RentalList rlist = (RentalList) request.getAttribute("rlist"); // o
+		RentalList rlist = (RentalList) request.getAttribute("rlist");
 		String paySelect = (String) request.getAttribute("payselect"); 
-		int productNo = (int) request.getAttribute("productNo"); // o
-		String startDay = (String) request.getAttribute("startday"); // o
-		String endDay = (String) request.getAttribute("endday"); // o
+		int productNo = (int) request.getAttribute("productNo");
+		String startDay = (String) request.getAttribute("startday");
+		String endDay = (String) request.getAttribute("endday");
 		String state = (String) request.getAttribute("state");
 		
 		Rental rental = new Rental();

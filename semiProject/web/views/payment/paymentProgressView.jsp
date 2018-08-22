@@ -6,11 +6,13 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <script type="text/javascript">
+	//취소버튼 클릭시
 	function backmain() {
 		alert("주문이 취소되었습니다.");
 		location.href="/semi/index.jsp";
 	}	
 	
+	// 카드 또는 무통장입금 체크시
 	$(function() {
 		$("input[type=radio]").change(function() {
 			if($(this).is(":checked")) {
@@ -30,12 +32,14 @@
 		</div>
 	</div>
 
+	<!-- 결제할 상품 출력 -->
 	<div align="center">
 		<div>
 			주문상품 확인
 		</div>
 		<form action="/semi/rlist" id="fsubmit" method="post">
 		
+		<!-- 서블릿에 전달해야하느 값들 -->
 		<input type="hidden" name="loginId" id = "loginId" value=" <%= mId %>">
 		<input type="hidden" name="totalcount" id="totlcount" value="1">
 		<input type="hidden" name="productNo" id="productNo" value="03">
@@ -46,8 +50,11 @@
 					<th colspan="2">상품/옵션정보</th><th>대여가</th><th>대여일</th>
 				</tr>
 				<tr>
-					<td rowspan="2"><a href="#"><img src="/semi/resources/images/main/01_1.jpg"></a></td>
-					<td>LED후레쉬(LF-1418Z)</td><td rowspan="2">10000원</td>
+					<td rowspan="2">
+						<a href="/semi/pdetail.bd?pname=포터블그라인더"><img src="/semi/resources/images/main/01_1.jpg"></a>
+					</td>
+					<td><a href="/semi/pdetail.bd?pname=포터블그라인더">LED후레쉬(LF-1418Z)</a></td>
+					<td rowspan="2">10000원</td>
 					<td rowspan="2">시작일 : <input type="hidden" name="startday" id="startday" value="2018-08-20">2018-08-20 ~ 종료일 : <input type="hidden" name="endday" id="endday" value="2018-08-21">2018-08-21</td>
 				</tr>
 				<tr>
@@ -57,6 +64,7 @@
 		</div>		
 	</div>
 	
+	<!-- 결제 금액과 결제 방법 선택 -->
 	<div align="center">
 		<div>결제 정보</div>
 		<div>
@@ -98,6 +106,7 @@
 	</form>
 </div>
 
+<!-- 카드 결제시 작동하는 API -->
 <script type="text/javascript">
 
 		$("#checkcard").click(function() {

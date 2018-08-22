@@ -3,7 +3,6 @@
 <%@ page import="semi.products.model.vo.Product" %>
 <%
 	Product product = (Product)request.getAttribute("product");
-	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
 	String[] slideimg = product.getP_main_image().split(",");
 	
 %>

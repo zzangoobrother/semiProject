@@ -25,8 +25,8 @@
 			</tr>
 			
 			<tr>
-				<td rowspan="2"><img src="/semi/resources/images/main/01_1.jpg"></td>
-				<td>햄머드릴(PHD-2838)</td>
+				<td rowspan="2"><a href="/semi/pdetail.bd?pname=포터블그라인더"><img src="/semi/resources/images/main/01_1.jpg"></a></td>
+				<td><a href="/semi/pdetail.bd?pname=포터블그라인더">햄머드릴(PHD-2838)</a></td>
 				<td rowspan="2">시작일 : 2018-08-20 ~ 종료일 : 2018-08-22</td>
 			</tr>
 			

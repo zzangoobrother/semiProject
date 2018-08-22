@@ -40,9 +40,9 @@ public class PaymentProgressServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String paySelect = (String) request.getAttribute("payselect");
-		String state = (String) request.getAttribute("state");
-		Rental rental = (Rental) request.getAttribute("rental");
+		String paySelect = (String) request.getAttribute("payselect"); // 결제 방법
+		String state = (String) request.getAttribute("state"); //대여 가능 상태
+		Rental rental = (Rental) request.getAttribute("rental"); // DAO에서 받은 rental 값
 		 
 		Payment pay = new Payment();
 		

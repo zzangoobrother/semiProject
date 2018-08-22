@@ -43,10 +43,10 @@ public class RentalListInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mId = (String) request.getParameter("loginId"); // 회원 아이디 - o
+		String mId = (String) request.getParameter("loginId"); // 회원 아이디
 		String paySelect = (String) request.getParameter("payselect"); // 결제 방법
-		int orderpay = Integer.parseInt((String) request.getParameter("orderpay")); // 총 금액 - o
-		int count = Integer.parseInt((String) request.getParameter("totalcount")); // 대여 수량 - o
+		int orderpay = Integer.parseInt((String) request.getParameter("orderpay")); // 총 금액
+		int count = Integer.parseInt((String) request.getParameter("totalcount")); // 대여 수량
 		int productNo = Integer.parseInt((String) request.getParameter("productNo")); // 물품번호
 		String startDay = (String) request.getParameter("startday"); // 대여실행일
 		String endDay = (String) request.getParameter("endday"); //반납신청일

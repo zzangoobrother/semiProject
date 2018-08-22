@@ -20,6 +20,7 @@
 	<!-- 검색구역 -->
 	<div align="center">
 		<select>
+			<option>전체</option>
 			<option>강남구</option>
 			<option>강동구</option>
 			<option>강북구</option>

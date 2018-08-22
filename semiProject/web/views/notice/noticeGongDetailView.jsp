@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="semi.notice.model.vo.NoticeGong, semi.notice.model.vo.NoticeComment"%>
+<%@ page import="semi.notice.model.vo.Notice, semi.notice.model.vo.NoticeComment"%>
 <%
-	NoticeGong notice = (NoticeGong)request.getAttribute("notice");
+	Notice notice = (Notice)request.getAttribute("notice");
 	NoticeComment noticecom = (NoticeComment)request.getAttribute("noticecom");
 	int currentPage = ((Integer)request.getAttribute("currentPage")).intValue();
 %>
@@ -24,9 +24,9 @@
 <br><br>
 	<form action="/second/ngupdate" method="post"
 		enctype="multipart/form-data">
-		<input type="hidden" name="no" value="<%= notice.getNoticeNo()%>">
+		<input type="hidden" name="no" value="<%= notice.getN_no() %>">
 		<input type="hidden" name="rfile"
-			value="<%= notice.getRenameFilepath()%>">
+			value="<%= notice.getN_file1()%>">
 		<table align="center" width="800" cellspcing="0">
 			
 			<col width="80">
@@ -35,13 +35,13 @@
 			<tr style="height: 40px;">
 				<th>제목</th>
 				<td>
-					<input style="border: 1px solid #666;" type="text" name="ngtitle" value="<%= notice.getNoticeTitle()%>">
+					<input style="border: 1px solid #666;" type="text" name="ngtitle" value="<%= notice.getN_title()%>">
 				</td>
 			</tr>
 			<tr style="height: 50px;">
 				<th>작성자</th>
 				<td>
-					<input style="border: 1px solid #666;" type="text" name="ngwriter" readonly value="<%= notice.getNoticeWriter() %>">
+					<input style="border: 1px solid #666;" type="text" name="ngwriter" readonly value="<%= notice.getA_id() %>">
 				</td>
 			</tr>
 
@@ -49,21 +49,19 @@
 				<th>내용</th>
 				<td style=" height:300px;  border: 1px solid #666;">
 					<div contentEditable="true" style="border: 1px solid #666;">
-						<% if(notice.getOriginalFilepath() != null) { %>
-						<img src="/second/second/ngupfiles/
-	<%= notice.getOriginalFilepath()%>">
+						<% if(notice.getN_file1() != null) { %>
+						<img src="/second/second/ngupfiles/<%= notice.getN_file1()%>">
 						<% } %>
 						<br>
 						<br>
-						<% if(notice.getOriginalFilepath2() != null) { %>
+						<% if(notice.getN_file2() != null) { %>
 						<img 
-							src="/second/second/ngupfiles/
-	<%= notice.getOriginalFilepath2()%>">
+							src="/second/second/ngupfiles/<%= notice.getN_file2()%>">
 						<% } %>
 						<br>
 						<br>
-						<% if(notice.getNoticeContent() != null) { %>
-						<%= notice.getNoticeContent() %>
+						<% if(notice.getN_content() != null) { %>
+						<%= notice.getN_count() %>
 						<% } %>
 					</div>
 				</td>
@@ -85,7 +83,7 @@
 <a href="#" onclick="aclick();">등록
 			<script type="text/javascript">
 			function aclick(){
-				var no = <%= notice.getNoticeNo()%>;
+				var no = <%= notice.getN_no()%>;
 				var com = $("#comment").val();
 				$.ajax({
 					url : "ngcomment",
@@ -110,11 +108,11 @@
 		
 		<div style="margin: 0 auto; padding-top: 15px; width: 800px; height: 200px; text-align: right;">
 	
-						<a href="/second/ngupview?no=<%= notice.getNoticeNo() %>&page=<%= currentPage %>">
+						<a href="/second/ngupview?no=<%= notice.getN_no() %>&page=<%= currentPage %>">
 							수정하기</a>
 					 &nbsp;
 				
-						<a href="/second/ngdelete?no=<%= notice.getNoticeNo() %>">삭제하기</a>
+						<a href="/second/ngdelete?no=<%= notice.getN_no() %>">삭제하기</a>
 					 &nbsp;
 
 					

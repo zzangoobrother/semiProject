@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="noticeGongError.jsp"%>
-<%@ page import="gonggu.model.vo.NoticeGong" %>
+<%@ page import="semi.notice.model.vo.Notice" %>
 <%
-		NoticeGong notice = (NoticeGong)request.getAttribute("notice");
+		Notice notice = (Notice)request.getAttribute("notice");
 		int currentPage = ((Integer)request.getAttribute("page")).intValue();
 		String userId = (String)session.getAttribute("userId");
 
@@ -261,25 +261,21 @@ function readURL2(input) {
 <br><br>
 <!-- 아이디 일치 하지 않을시 수정 불가하게 작성 -->
 <form action="/second/ngoriginup" method="post" enctype="multipart/form-data">
-<input type="hidden" name="no" value="<%= notice.getNoticeNo()%>">
+<input type="hidden" name="no" value="<%= notice.getN_no()%>">
 <input type="hidden" name="page" value="<%= currentPage%>">
 <table align="center" height="500" width="650" cellspacing="0" border="1" >
 
 <tr>
 	<td height="15" width="100">제목</td>
-	<td><input type="text" name="ngtitle" 
-	value="<%= notice.getNoticeTitle() %>"></td>
+	<td><input type="text" name="ngtitle" value="<%= notice.getN_title() %>"></td>
 </tr>
-
-<tr>
 	<td height="15" width="100">작성자</td>
-	<td><input type="text" name="ngwriter" 
-	value="<%= notice.getNoticeWriter() %>" readonly></td>
+	<td><input type="text" name="ngwriter" value="<%= notice.getA_id() %>" readonly></td>
 </tr>
 
 <tr>
 	<th>첨부파일변경</th>
-	<td>
+</tr>
 
 <input type="file" name="gupfile"  onchange="readURL(this);">
 <input type="file" onchange="readURL2(this);"  name="gupfile2">
@@ -288,13 +284,13 @@ function readURL2(input) {
 <tr>
 	<th>추가된이미지</th>
 	<td>
-	<% if(notice.getOriginalFilepath() != null){ %>
+	<% if(notice.getN_file1() != null){ %>
 	<%-- <img style="width:100px; height:100px;" src="/second/second/ngupfiles/<%= notice.getOriginalFilepath() %>"> --%>
-	<%=notice.getOriginalFilepath() %>
+	<%=notice.getN_file1() %>
 	<% } %>
 	
-	<% if(notice.getOriginalFilepath2() != null ){ %>
-	<img style="width:100px; height:100px;" src="/second/second/ngupfiles/<%= notice.getOriginalFilepath2() %>">
+	<% if(notice.getN_file2() != null ){ %>
+	<img style="width:100px; height:100px;" src="/second/second/ngupfiles/<%= notice.getN_file2() %>">
 	<% } %>
 	</td>
 	
@@ -304,23 +300,23 @@ function readURL2(input) {
 	<th>내용</th>
 	<td>
 	<div contentEditable="true" >
-	<% if(notice.getOriginalFilepath() != null ) { %>
+	<% if(notice.getN_file1() != null ) { %>
 	<img  id="blah" style=" border:0px; " src="/second/second/ngupfiles/
-	<%= notice.getOriginalFilepath()%>" >
+	<%= notice.getN_file1()%>" >
 	<% }else{ %>
 	<img  id="blah" style=" border:0px;" >
 	<% } %>
 	<br><br>
-	<% if(notice.getOriginalFilepath2() != null) { %>
+	<% if(notice.getN_file2() != null) { %>
 	<img  id="blah2" style=" border:0px;" src="/second/second/ngupfiles/
-	<%= notice.getOriginalFilepath2()%>">
+	<%= notice.getN_file2()%>">
 	<% }else{ %>
 	<img  id="blah2" style=" border:0px;" >
 	<% } %>
 	<br><br>
-	<% if(notice.getNoticeContent() != null) { %>
+	<% if(notice.getN_content() != null) { %>
 	<input type="text" name="ngcontent" 
-	value="<%= notice.getNoticeContent() %>" >
+	value="<%= notice.getN_content() %>" >
 	<% } %>
 	
 	</div>

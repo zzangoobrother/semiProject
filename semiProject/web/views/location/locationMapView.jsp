@@ -1,14 +1,26 @@
+<%@page import="semi.locationInfo.controller.LocationListServlet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="semi.locationInfo.model.vo.LocationInfo, java.util.ArrayList" %>
+<%
+	ArrayList<LocationInfo> list = (ArrayList<LocationInfo>) request.getAttribute("list");
+	int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
+	int maxPage = ((Integer) request.getAttribute("maxPage")).intValue();
+	int startPage = ((Integer) request.getAttribute("startPage")).intValue();
+	int endPage = ((Integer) request.getAttribute("endPage")).intValue();
+	int listCount = ((Integer) request.getAttribute("listCount")).intValue();
+%>
+
 <%@ include file="../../header.jsp" %>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b07804eb6c910b861023a656cfa85814&libraries=services"></script>
 
-
 <div>
 	<!-- 검색구역 -->
+	<form action="/semi/mapselect" method="post">
 	<div align="center">
-		<select>
+		<select id="selectlocation" name="selectlocation">
+			<option selected>전체</option>
 			<option>강남구</option>
 			<option>강동구</option>
 			<option>강북구</option>
@@ -34,12 +46,14 @@
 			<option>종로구</option>
 			<option>중구</option>
 			<option>중랑구</option>
-		</select> <input type="search" placeholder="주소 또는 주민센터">
-		<button onclick="addressSelect();">검색</button>
+		</select> 
+		<input type="search" id="searchinput" name="searchinput" placeholder="주소 또는 주민센터">
+		<input type="submit">검색</button>
 	</div>
+	</form>
 
 	<!-- 지도 출력 -->
-	<div id="map" align="center" style="width: 100%; height: 350px;"></div>
+	<div id="map" align="center" style="width: 100%; height: 550px;"></div>
 
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -57,7 +71,7 @@
 
 		// 주소로 좌표를 검색합니다
 		function addressSelect() {
-			var address = document.getElementById("address").value;
+			var address = document.getElementById("address").value; // 주소 입력
 			console.log(address);
 			geocoder.addressSearch(
 							address,
@@ -86,19 +100,59 @@
 							});
 		}
 	</script>
-
-	<!-- 주소 리스트 -->
+	<!-- 주소 리스트 -->	
 	<div align="center">
 		<table cellspacing="0" border="1">
 			<tr>
-				<th>상세주소</th>
+				<th>구 이름</th>
+				<th>상세 주소</th>
 				<th>주민센터</th>
 			</tr>
+			
+			<% for(LocationInfo l : list) { %>
 			<tr>
-				<td>강남구1</td>
-				<td>주민센터1</td>
+				<td><%= l.getL_Local() %></td><td><%= l.getL_Address() %></td><td><%= l.getL_Name() %></td>
 			</tr>
+			<% } %>
 		</table>
+	</div>
+
+	<div class="col-md-12 clear">
+		<div class="pull-right">
+			<div class="pagination">
+				<ul id="page">
+					<% if(currentPage <= 1) { %>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=1"><<</a></li>
+					<% } %>
+
+					<% if(currentPage == 1) { %>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=<%= currentPage - 1%>"><</a></li>
+					<% } %>
+
+					<% for (int p = startPage; p <= endPage; p++) { 
+					if (p == currentPage) { %>
+					<li><a href="#"> <font color="red"><%=p%></font>
+					</a></li>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=<%=p%>"> <%=p%>
+					</a></li>
+					<%}} %>
+
+					<% if (currentPage == maxPage) { %>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=<%= currentPage + 1 %>"> >
+					</a></li>
+					<% } %>
+
+					<% if (currentPage >= maxPage) { %>
+					<% } else { %>
+					<li><a href="/semi/maplist?page=<%= maxPage %>"> >> </a></li>
+					<% } %>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>
 <%@ include file="../../footer.jsp" %>

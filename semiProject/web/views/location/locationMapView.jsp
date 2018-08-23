@@ -1,16 +1,5 @@
-<%@page import="semi.locationInfo.controller.LocationListServlet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="semi.locationInfo.model.vo.LocationInfo, java.util.ArrayList" %>
-<%
-	ArrayList<LocationInfo> list = (ArrayList<LocationInfo>) request.getAttribute("list");
-	int currentPage = ((Integer) request.getAttribute("currentPage")).intValue();
-	int maxPage = ((Integer) request.getAttribute("maxPage")).intValue();
-	int startPage = ((Integer) request.getAttribute("startPage")).intValue();
-	int endPage = ((Integer) request.getAttribute("endPage")).intValue();
-	int listCount = ((Integer) request.getAttribute("listCount")).intValue();
-%>
-
 <%@ include file="../../header.jsp" %>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b07804eb6c910b861023a656cfa85814&libraries=services"></script>
@@ -45,8 +34,7 @@
 			<option>종로구</option>
 			<option>중구</option>
 			<option>중랑구</option>
-		</select> 
-		<input type="search" placeholder="주소 또는 주민센터">
+		</select> <input type="search" placeholder="주소 또는 주민센터">
 		<button onclick="addressSelect();">검색</button>
 	</div>
 
@@ -103,16 +91,13 @@
 	<div align="center">
 		<table cellspacing="0" border="1">
 			<tr>
-				<th>구 이름</th>
-				<th>상세 주소</th>
+				<th>상세주소</th>
 				<th>주민센터</th>
 			</tr>
-			
-			<% for(LocationInfo l : list) { %>
 			<tr>
-				<td><%= l.getL_Local() %></td><td><%= l.getL_Address() %></td><td><%= l.getL_Name() %></td>
+				<td>강남구1</td>
+				<td>주민센터1</td>
 			</tr>
-			<% } %>
 		</table>
 	</div>
 </div>

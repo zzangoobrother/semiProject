@@ -15,12 +15,12 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b07804eb6c910b861023a656cfa85814&libraries=services"></script>
 
+
 <div>
 	<!-- 검색구역 -->
-	<form action="/semi/mapselect" method="post">
 	<div align="center">
-		<select id="selectlocation" name="selectlocation">
-			<option selected>전체</option>
+		<select>
+			<option>전체</option>
 			<option>강남구</option>
 			<option>강동구</option>
 			<option>강북구</option>
@@ -47,13 +47,12 @@
 			<option>중구</option>
 			<option>중랑구</option>
 		</select> 
-		<input type="search" id="searchinput" name="searchinput" placeholder="주소 또는 주민센터">
-		<input type="submit">검색</button>
+		<input type="search" placeholder="주소 또는 주민센터">
+		<button onclick="addressSelect();">검색</button>
 	</div>
-	</form>
 
 	<!-- 지도 출력 -->
-	<div id="map" align="center" style="width: 100%; height: 550px;"></div>
+	<div id="map" align="center" style="width: 100%; height: 350px;"></div>
 
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -71,7 +70,7 @@
 
 		// 주소로 좌표를 검색합니다
 		function addressSelect() {
-			var address = document.getElementById("address").value; // 주소 입력
+			var address = document.getElementById("address").value;
 			console.log(address);
 			geocoder.addressSearch(
 							address,
@@ -100,7 +99,8 @@
 							});
 		}
 	</script>
-	<!-- 주소 리스트 -->	
+
+	<!-- 주소 리스트 -->
 	<div align="center">
 		<table cellspacing="0" border="1">
 			<tr>
@@ -120,7 +120,7 @@
 	<div class="col-md-12 clear">
 		<div class="pull-right">
 			<div class="pagination">
-				<ul id="page">
+				<ul>
 					<% if(currentPage <= 1) { %>
 					<% } else { %>
 					<li><a href="/semi/maplist?page=1"><<</a></li>

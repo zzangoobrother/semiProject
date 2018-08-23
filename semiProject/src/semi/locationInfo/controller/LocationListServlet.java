@@ -1,6 +1,7 @@
 package semi.locationInfo.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import semi.locationInfo.model.service.LocationInfoService;
 import semi.locationInfo.model.vo.LocationInfo;
@@ -45,7 +49,6 @@ public class LocationListServlet extends HttpServlet {
 		LocationInfoService infoService = new LocationInfoService();
 		
 		RequestDispatcher view = null;
-		
 		try {
 			int listCount = infoService.getListCount();
 			

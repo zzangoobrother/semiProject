@@ -28,7 +28,7 @@ public class LocationInfoDao {
 		return list;
 	}
 
-	public int getListCount(Connection conn) throws LocationInfoException {
+	public int getListCount(Connection conn) {
 		int listCount = 0;
 		
 		Statement stmt = null;
@@ -49,7 +49,7 @@ public class LocationInfoDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new LocationInfoException(e.getMessage());
+			//throw new LocationInfoException(e.getMessage());
 		} finally {
 			close(rset);
 			close(stmt);
@@ -58,7 +58,7 @@ public class LocationInfoDao {
 		return listCount;
 	}
 
-	public ArrayList<LocationInfo> selectList(Connection conn, int currentPage, int limit) throws LocationInfoException {
+	public ArrayList<LocationInfo> selectList(Connection conn, int currentPage, int limit) {
 		ArrayList<LocationInfo> list = new ArrayList<LocationInfo>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -91,7 +91,7 @@ public class LocationInfoDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new LocationInfoException(e.getMessage());
+			//throw new LocationInfoException(e.getMessage());
 		} finally {
 			close(rset);
 			close(pstmt);

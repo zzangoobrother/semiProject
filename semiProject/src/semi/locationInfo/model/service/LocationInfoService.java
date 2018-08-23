@@ -26,7 +26,7 @@ public class LocationInfoService {
 		return list;
 	}
 
-	public int getListCount() throws LocationInfoException {
+	public int getListCount() {
 		Connection conn = getConnection();
 		int listCount = new LocationInfoDao().getListCount(conn);
 		close(conn);
@@ -34,7 +34,7 @@ public class LocationInfoService {
 		return listCount;
 	}
 
-	public ArrayList<LocationInfo> selectList(int currentPage, int limit) throws LocationInfoException {
+	public ArrayList<LocationInfo> selectList(int currentPage, int limit) {
 		Connection conn = getConnection();
 		ArrayList<LocationInfo> list = new LocationInfoDao().selectList(conn, currentPage, limit);
 		close(conn);
